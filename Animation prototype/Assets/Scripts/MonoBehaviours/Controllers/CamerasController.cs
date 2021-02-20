@@ -1,18 +1,23 @@
-﻿using MonoBehaviours.Triggers;
+﻿using Cinemachine;
+using MonoBehaviours.Triggers;
 using UnityEngine;
 
 namespace MonoBehaviours.Controllers
 {
     public class CamerasController : MonoBehaviour
     {
+        public GameObject player;
+        public GameObject mech;
+        public CinemachineVirtualCamera virtualCamera;
+
         private void OnSpaceEnter()
         {
-            Debug.Log("Space enter");
+            virtualCamera.LookAt = mech.transform;
         }
 
         private void OnSpaceLeave()
         {
-            Debug.Log("Space leave");
+            virtualCamera.LookAt = player.transform;
         }
 
         private void Start()
