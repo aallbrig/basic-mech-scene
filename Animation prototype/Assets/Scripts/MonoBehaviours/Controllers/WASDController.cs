@@ -4,6 +4,8 @@ namespace MonoBehaviours.Controllers
 {
     public class WASDController : MonoBehaviour
     {
+        public Animator animator;
+
         private float _speed = 5.0f;
         private Transform _transform;
         private void Start()
@@ -15,8 +17,10 @@ namespace MonoBehaviours.Controllers
         {
             var hInput = Input.GetAxis("Horizontal");
             var vInput = Input.GetAxis("Vertical");
-        
+
             _transform.Translate(hInput * _speed * Time.deltaTime, 0, vInput * _speed * Time.deltaTime);
+            
+            animator.SetFloat("speed", vInput + hInput);
         }
     }
 }
